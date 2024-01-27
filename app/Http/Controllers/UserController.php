@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserCreated;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -35,6 +36,8 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => bcrypt('1234'),
         ]);
+
+        UserCreated::dispatch($user);
 
         return redirect()->route('user.index')->with('success', 'User created successfully');
     }
