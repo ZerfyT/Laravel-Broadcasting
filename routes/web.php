@@ -19,3 +19,6 @@ Route::get('/', function () {
 })->name('home');
 
 Route::resource('user', UserController::class);
+
+// Logger Routes
+Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
