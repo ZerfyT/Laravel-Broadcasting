@@ -1,23 +1,32 @@
 @extends('layouts.main')
 
 @section('content')
+    <div class="">
+        <!-- Create new user button -->
+        <button class="btn btn-outline btn-primary" onclick="create_user_modal.showModal()">Create New User</button>
 
-<div class="flex flex-col">
-    <!-- Create new user button -->
-    <a href="{{ route('user.create') }}" class="my-3 p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Create new user</h5>
-    </a>
-
-    @foreach ($users as $user)
-        <div class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ $user->name }}</h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $user->email }}</p>
+        <div class="overflow-x-auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($users as $user)
+                        <tr class="hover">
+                            <th>{{ $user->id }}</th>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
-    @endforeach
 
-</div>
+        @include('components.create-user-modal')
 
-
+    </div>
 @endsection

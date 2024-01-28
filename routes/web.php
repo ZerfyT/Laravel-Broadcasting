@@ -21,4 +21,4 @@ Route::get('/', function () {
 Route::resource('user', UserController::class);
 
 // Logger Routes
-Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
+Route::get('/logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);

@@ -17,7 +17,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 import Echo from 'laravel-echo';
 
-import Pusher from 'pusher-js';
+// import Pusher from 'pusher-js';
 // window.Pusher = Pusher;
 
 window.Echo = new Echo({
@@ -31,13 +31,6 @@ window.Echo = new Echo({
     enabledTransports: ['ws', 'wss'],
 });
 
-console.log(import.meta.env.VITE_PUSHER_APP_KEY);
-console.log(import.meta.env.VITE_PUSHER_HOST);
-console.log(import.meta.env.VITE_PUSHER_PORT);
-console.log(import.meta.env.VITE_PUSHER_SCHEME);
-
-
 window.Echo.channel('user').listen('UserCreated', (e) => {
     console.log(e);
-    alert(e);
 })
