@@ -17,7 +17,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 import Echo from 'laravel-echo';
 
-// import Pusher from 'pusher-js';
+import Pusher from 'pusher-js';
 // window.Pusher = Pusher;
 
 window.Echo = new Echo({
@@ -33,4 +33,12 @@ window.Echo = new Echo({
 
 window.Echo.channel('user').listen('UserCreated', (e) => {
     console.log(e);
+    updateNotifications();
 })
+
+function updateNotifications() {
+    axios.get('/').then((response) => {
+        console.log(response);
+        document.querySelector('#notification-count .stat-value').innerHTML = response.data.count;
+    })
+}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\UserCreated;
 use App\Models\User;
+use App\Notifications\UserCreatedNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
@@ -38,7 +39,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users',
         ]);
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return redirect()
                 ->back()
                 ->withErrors($validator)
@@ -52,6 +53,7 @@ class UserController extends Controller
         ]);
 
         UserCreated::dispatch($user);
+        $user->notify(new UserCreatedNotification($user));
 
         return redirect()->route('user.index')->with('success', 'User created successfully');
     }
