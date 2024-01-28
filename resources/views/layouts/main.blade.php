@@ -8,6 +8,8 @@
     <title>Broadcasting Test</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    @livewireStyles
 </head>
 
 <body class="antialiased">
@@ -37,6 +39,7 @@
 
     <div class="toast toast-end"></div>
 
+    @livewireScripts
     @stack('scripts')
 
     <script>
