@@ -30,7 +30,7 @@ class UserCreated implements ShouldBroadcast
      */
     public function broadcastOn(): Channel
     {
-        return new Channel('user');
+        return new Channel('users');
     }
 
     /**
@@ -41,7 +41,9 @@ class UserCreated implements ShouldBroadcast
     public function broadcastWith(): array
     {
         return [
-            'name' => $this->user->name
+            'id' => $this->user->id,
+            'name' => $this->user->name,
+            'time' => $this->user->created_at->diffForHumans()
         ];
     }
 }

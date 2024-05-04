@@ -31,14 +31,14 @@ window.Echo = new Echo({
     enabledTransports: ['ws', 'wss'],
 });
 
-window.Echo.channel('user').listen('UserCreated', (e) => {
-    console.log(e);
-    updateNotifications();
-})
+// window.Echo.channel('user').listen('UserCreated', (e) => {
+//     console.log(e);
+//     updateNotifications();
+// })
 
-function updateNotifications() {
-    axios.get('/').then((response) => {
-        console.log(response);
-        document.querySelector('#notification-count .stat-value').innerHTML = response.data.count;
-    })
-}
+// function updateNotifications() {
+//     axios.get('/').then((response) => {
+//         console.log(response);
+//         document.querySelector('#notification-count .stat-value').innerHTML = response.data.count;
+//     })
+// }

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Livewire\Dashboard;
+use App\Livewire\UsersDashboard;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,11 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [DashboardController::class, 'index'])->name('home');
+Route::get('/', Dashboard::class)->name('home');
 
-Route::resource('user', UserController::class);
+Route::get('users', UsersDashboard::class)->name('users');
 
 // Logger Routes
 Route::get('/logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->name('logs');
 
-Route::get('/notifications', [UserController::class, 'notifications'])->name('notifications');
+// Route::get('/notifications', [UserController::class, 'notifications'])->name('notifications');

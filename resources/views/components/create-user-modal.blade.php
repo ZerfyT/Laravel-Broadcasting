@@ -7,10 +7,21 @@
             </form>
         </div>
 
-        <form action="{{ route('user.store') }}" method="POST">
-            @csrf
-            <input type="text" name="name" placeholder="User Name" class="input input-bordered input-primary w-full max-w-xs" />
-            <input type="email" name="email" placeholder="Email" class="input input-bordered input-primary w-full max-w-xs mt-3" />
+        <form wire:submit="createUser">
+            <input type="text" wire:model="name" placeholder="User Name"
+                class="input input-bordered input-primary w-full max-w-xs" />
+            <div>
+                @error('name')
+                    <span class="error">{{ $message }}</span>
+                @enderror
+            </div>
+            <input type="email" wire:model="email" placeholder="Email"
+                class="input input-bordered input-primary w-full max-w-xs mt-3" />
+            <div>
+                @error('email')
+                    <span class="error">{{ $message }}</span>
+                @enderror
+            </div>
             <div class="flex items-center justify-end mt-4">
                 <button type="submit" class="btn btn-outline btn-primary">Save</button>
             </div>

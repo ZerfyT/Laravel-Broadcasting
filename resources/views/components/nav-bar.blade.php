@@ -5,7 +5,7 @@
 
     <div class="flex-none">
         <ul class="menu menu-horizontal px-1">
-            <li><a href="{{ route('user.index') }}">Users</a></li>
+            <li><a href="{{ route('users') }}">Users</a></li>
             <li><a href="{{ url('/laravel-websockets') }}">WebSocket Log</a></li>
             <li><a href="{{ url('/logs') }}">Server Log</a></li>
             <li>
